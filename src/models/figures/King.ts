@@ -17,6 +17,35 @@ export class King extends Figure {
             return false
         }
 
-        return true
+        if (target.figure?.name === FigureNames.KING && target.figure?.color) {
+            console.log(target)
+        }
+
+        const isVerticalMove =
+            (target.y === this.cell.y + 1 || target.y === this.cell.y - 1) &&
+            target.x === this.cell.x
+
+        const isHorizontalMove =
+            (target.x === this.cell.x + 1 || target.x === this.cell.x - 1) &&
+            target.y === this.cell.y
+
+        const isLeftDiagonal =
+            (target.x === this.cell.x + 1 && target.y === this.cell.y + 1) ||
+            (target.x === this.cell.x - 1 && target.y === this.cell.y - 1)
+
+        const isRightDiagonal =
+            (target.x === this.cell.x + 1 && target.y === this.cell.y - 1) ||
+            (target.x === this.cell.x - 1 && target.y === this.cell.y + 1)
+
+        if (
+            isVerticalMove ||
+            isHorizontalMove ||
+            isLeftDiagonal ||
+            isRightDiagonal
+        ) {
+            return true
+        }
+
+        return false
     }
 }
