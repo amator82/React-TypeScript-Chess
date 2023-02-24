@@ -7,6 +7,7 @@ import { Colors } from './models/Color'
 import { Player } from './models/Player'
 
 import './App.css'
+import LostFigures from './components/LostFigures'
 
 function App() {
     const [board, setBoard] = useState(new Board())
@@ -34,7 +35,22 @@ function App() {
 
     return (
         <div className='app'>
-            <BoardComponent board={board} setBoard={setBoard} currentPlayer={currentPlayer} swapPlayer={swapPlayer} />
+            <BoardComponent
+                board={board}
+                setBoard={setBoard}
+                currentPlayer={currentPlayer}
+                swapPlayer={swapPlayer}
+            />
+            <div>
+                <LostFigures
+                    title='Black figures'
+                    figures={board.lostBlackFigures}
+                />
+                <LostFigures
+                    title='White figures'
+                    figures={board.lostWhiteFigures}
+                />
+            </div>
         </div>
     )
 }
